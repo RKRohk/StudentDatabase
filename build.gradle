@@ -16,6 +16,16 @@ buildscript {
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
+
+}
+plugins {
+    id "com.diffplug.gradle.spotless" version "3.26.1"
+}
+spotless {
+    kotlin {
+        target "**/*.kt"
+        ktlint("0.36.0").userData(['max_line_length' : '100'])
+    }
 }
 
 allprojects {
@@ -26,6 +36,4 @@ allprojects {
     }
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
-}
+

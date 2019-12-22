@@ -42,7 +42,11 @@ class ListStudents : Fragment() {
                 Log.i("Student","Students no more null")
                 Log.i("Student","${viewModel.studentsList.value?.get(0)?.name}")
                 val list:MutableList<Student> = (viewModel.studentsList.value as MutableList<Student>)
+                for (i in 0 until list.size.minus(1)){
+                    Log.i("Student","${list[i].name}" )
+                }
                 adapter.submitList(list)
+                binding.executePendingBindings()
             }
         })
         binding.recyclerview.adapter = adapter
